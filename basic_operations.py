@@ -15,11 +15,14 @@ def multiplication(x, y):
     return x * y
 
 def division(numbers):
-    fractional = numbers[0] / numbers[1]
-    integer = numbers[0] // numbers[1]
-    rest = numbers[0] % numbers[1]
-
-    return (fractional, integer, rest)
+    try:
+        fractional = numbers[0] / numbers[1]
+        integer = numbers[0] // numbers[1]
+        rest = numbers[0] % numbers[1]
+        return (fractional, integer, rest)
+    except ZeroDivisionError:
+        print("it is not possible to divide by zero")
+        return (0, 0, 0)
 
 option = introduction()
 
@@ -32,6 +35,11 @@ if option == 1:
         if n == 'no':
              break
         else:
+            try:
+                float(n)
+            except ValueError:
+                print("it is not possible to add a letter with a number")
+                break
             numbers.append(float(n))
 
     print(f'the sum of these terms is : {reduce(add, numbers)}')
@@ -43,6 +51,11 @@ elif option == 2:
         if n == 'no':
              break
         else:
+            try:
+                float(n)
+            except ValueError:
+                print("it is not possible to add a letter with a number")
+                break
             numbers.append(float(n))
 
         result = [-x for x in numbers[1:]]
@@ -57,6 +70,11 @@ elif option == 3:
         if n == 'no':
              break
         else:
+            try:
+                float(n)
+            except ValueError:
+                print("it is not possible to add a letter with a number")
+                break
             numbers.append(float(n))
 
     print(f'the multiplication between these terms is : {reduce(multiplication, numbers)}')
